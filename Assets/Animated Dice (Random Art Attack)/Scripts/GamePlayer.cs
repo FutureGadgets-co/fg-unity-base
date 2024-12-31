@@ -22,14 +22,6 @@ public class GamePlayer : MonoBehaviour
         another = GameObject.Find("Another");
         rollJump = gameObject.GetComponent<RollJump>();
         textView = GameObject.Find("ShowText");
-        if (user != null)
-        {
-            Debug.Log("拿到了user");
-        }
-        else
-        {
-            Debug.Log("无法获取user");
-        }
         if (textView != null)
         {
             textComponent = textView.GetComponent<Text>();
