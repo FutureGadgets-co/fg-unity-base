@@ -14,7 +14,7 @@ public class FGMessageManager : MonoBehaviour
 {
 
     // 处理 Flutter 消息的方法
-    public void HandleFlutterMessage(string message)
+    public void LoadScene(string message)
     {
         Debug.Log("Received message from Flutter: " + message); // 处理接收到的消息
 
@@ -37,22 +37,5 @@ public class FGMessageManager : MonoBehaviour
                 SceneManager.LoadScene(message, LoadSceneMode.Additive);
             }
         }
-        
-        //MessageData messageData = JsonUtility.FromJson<MessageData>(message);
-        // Debug.Log("ID: " + messageData.methodName + ", Name: " + messageData.sceneName);
-        
-        // if (messageData.methodName == "LoadScene")
-        // {
-        //     SceneManager.LoadScene(messageData.sceneName);
-        // } else if (messageData.methodName == "Quit")
-        // {
-        //     SceneManager.LoadScene("BaseScene");
-        // }
     }
-    
-    // Update is called once per frame
-    // void Update()
-    // {
-    //     
-    // }
 }
