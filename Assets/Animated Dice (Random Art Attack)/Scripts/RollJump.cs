@@ -28,7 +28,7 @@ public class RollJump : MonoBehaviour
     void JumpBehavior()
     {
         Rigidbody rb;
-        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+        if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began || Input.GetMouseButtonDown(0))
         {
             onceFinished = false;
             StartCoroutine(TimerCoroutine());

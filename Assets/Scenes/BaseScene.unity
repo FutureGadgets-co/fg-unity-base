@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 597972290}
   - component: {fileID: 597972291}
   m_Layer: 0
-  m_Name: FGMessageManager
+  m_Name: SceneManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

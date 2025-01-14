@@ -8,6 +8,11 @@ public class DiceStats : MonoBehaviour
 {
     public Transform[] diceSides;
     public int side =1;
+    // Start is called before the first frame update
+    void Start()
+    {
+        Debug.Log("-=-=");
+    }
     void Update()
     {
         CheckDiceSide();

@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using FlutterUnityIntegration;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Runtime.InteropServices;
+using Random = UnityEngine.Random;
 
 public class GamePlayer : MonoBehaviour
 {
@@ -15,6 +16,9 @@ public class GamePlayer : MonoBehaviour
     private int anotherValue = 0;
     private Text textComponent;
     
+    [DllImport("__Internal")]
+    private static extern void unityToFlutter(string handlerName, string message);
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +26,15 @@ public class GamePlayer : MonoBehaviour
         another = GameObject.Find("Another");
         rollJump = gameObject.GetComponent<RollJump>();
         textView = GameObject.Find("ShowText");
+        
+        if (user != null)
+        {
+            Debug.Log("拿到了user");
+        }
+        else
+        {
+            Debug.Log("无法获取user");
+        }
         if (textView != null)
         {
             textComponent = textView.GetComponent<Text>();
@@ -52,13 +65,12 @@ public class GamePlayer : MonoBehaviour
             if (userValue > anotherValue)
             {
                 textComponent.text = "You win!";
-                StartCoroutine(TimerCoroutine("Successful"));
+                StartCoroutine(TimerCoroutine(1));
             }
             else if (userValue < anotherValue)
             {  
                 textComponent.text = "You lose!";
-                StartCoroutine(TimerCoroutine("Failed"));
-                UnityMessageManager.Instance.SendMessageToFlutter("Failed");
+                StartCoroutine(TimerCoroutine(0));
             }
             else
             {
@@ -69,10 +81,10 @@ public class GamePlayer : MonoBehaviour
         }
     }
     
-    private IEnumerator TimerCoroutine(string message)
+    private IEnumerator TimerCoroutine(int message)
     {
+        unityToFlutter("onUnityMessage", $"{{\"gameResult\":\"{message}\"}}");
         yield return new WaitForSeconds(1);
-        UnityMessageManager.Instance.SendMessageToFlutter("Successful");
     }
 }
 

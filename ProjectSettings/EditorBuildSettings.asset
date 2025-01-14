@@ -8,7 +8,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/LevelSelect.unity
     guid: 64784eb5bfbea694a817aed9a7911d18
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/BaseScene.unity
     guid: 841b24553a88a4b1daad9c0556ae7dc8
   - enabled: 1
@@ -26,7 +26,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Test.unity
     guid: 65a7956e555f742b89746e58a3387a73
-  - enabled: 1
+  - enabled: 0
     path: Assets/Animated Dice (Random Art Attack)/ExampleSceneWithRollingFunctionality.unity
     guid: c6d034d5c3c21874baee8614f9bb89db
   m_configObjects: {}

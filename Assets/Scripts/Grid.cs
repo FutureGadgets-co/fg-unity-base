@@ -1,10 +1,14 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-using FlutterUnityIntegration;
+using System.Runtime.InteropServices;
+using Random = UnityEngine.Random;
 
 public class Grid : MonoBehaviour
 {
+    [DllImport("__Internal")]
+    private static extern void unityToFlutter(string handlerName, string message);
     [System.Serializable]
     public struct PiecePrefab
     {
@@ -283,7 +287,7 @@ public class Grid : MonoBehaviour
                 steps += 1;
                 if (steps >= 3)
                 {
-                    UnityMessageManager.Instance.SendMessageToFlutter("Successful");
+                    unityToFlutter("onUnityMessage", $"{{\"gameResult\":\"1\"}}");
                     steps = 0;
                 }
             }
